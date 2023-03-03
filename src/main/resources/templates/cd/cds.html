@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Manage Cd</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+
+<div class="container-fluid text-center">
+  <div> <h1>Manage Cd</h1> </div>
+  <div th:if="${selectedcd}">
+    Welcome :[[${selectedcd.name}]]
+  </div>
+
+
+  <div th:if="${message}" class="alert alert-success text-center">
+    Hello [[${message}]]
+  </div>
+
+  <div>
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Size</th>
+        <th>Type</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <th:block th:if="${selectedcd}">
+        <tr>
+          <td>[[${selectedcd.id}]]</td>
+          <td>[[${selectedcd.name}]]</td>
+          <td>[[${selectedcd.size}]]</td>
+          <td>[[${selectedcd.type}]]</td>
+
+        </tr>
+
+      </th:block>
+
+      <th:block th:each="cd : ${listedcd}">
+        <tr>
+          <td>[[${cd.id}]]</td>
+          <td>[[${cd.name}]]</td>
+          <td>[[${cd.size}]]</td>
+          <td>[[${cd.type}]]</td>
+
+        </tr>
+
+      </th:block>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+</body>
+</html>
